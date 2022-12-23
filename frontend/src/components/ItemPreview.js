@@ -17,6 +17,20 @@ const mapDispatchToProps = (dispatch) => ({
     }),
 });
 
+const VerifiedSeller = (props)=>{
+
+  if(!props.isVerified){
+    return null;
+  }
+
+  return (
+    <>
+      <img src="verified_seller.svg" alt="verified seller image"/>
+      <span style={{color:"white"}}>TOP SELLER</span>
+    </>
+  );
+};
+
 const ItemPreview = (props) => {
   const item = props.item;
 
@@ -53,8 +67,7 @@ const ItemPreview = (props) => {
               alt={item.seller.username}
               className="user-pic rounded-circle pr-1"
             />
-            <img src="verified_seller.svg"/>
-            <span style={{color:"white"}}>TOP SELLER</span>
+            <VerifiedSeller isVerified={item.seller.isVerified}/>
           </Link>
           <button className="btn btn-outline-secondary" onClick={handleClick}>
             <i className="ion-heart"></i> {item.favoritesCount}
