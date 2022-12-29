@@ -42,10 +42,20 @@ class Home extends React.Component {
     this.props.onUnload();
   }
 
+  updateItems = (newItems) => {
+    const tab = "all";
+    const itemsPromise = () => Promise.resolve(newItems);
+    this.props.onLoad(
+      tab,
+      itemsPromise,
+      Promise.all([agent.Tags.getAll(), itemsPromise()])
+    );
+  }
+
   render() {
     return (
       <div className="home-page">
-        <Banner />
+        <Banner onUpdateItems={this.updateItems} />
 
         <div className="container page">
           <Tags tags={this.props.tags} onClickTag={this.props.onClickTag} />
