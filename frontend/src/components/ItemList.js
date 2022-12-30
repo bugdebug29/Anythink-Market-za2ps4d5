@@ -2,13 +2,27 @@ import ItemPreview from "./ItemPreview";
 import ListPagination from "./ListPagination";
 import React from "react";
 
+const NoItem = (props) => {
+
+  if(props.searchTitle.length > 2){
+    return (
+      <div className="py-4 no-items" >
+        No items found for <span className="search-title" id="empty">{props.searchTitle}</span>
+      </div>
+    );  
+  }
+
+  return <div className="py-4 no-items">No items are here... yet.</div>;
+  
+}
+
 const ItemList = (props) => {
   if (!props.items) {
     return <div className="py-4">Loading...</div>;
   }
 
   if (props.items.length === 0) {
-    return <div className="py-4 no-items">No items are here... yet.</div>;
+    return <NoItem searchTitle={props.searchTitle} />
   }
 
   return (

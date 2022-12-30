@@ -6,10 +6,12 @@ const SearchInput = (props) => {
 
   const inputHandler = (ev) => {
     const len = ev.target.value.length;
+    const title = ev.target.value;
     if(len > 2){
       const newItemsPromise = agent.Items.byTitle(ev.target.value);
       props.onUpdateItems(newItemsPromise);
     }
+    props.onUpdateSearchTitle(title);
 
   };
 
@@ -28,7 +30,7 @@ const Banner = (props) => {
         <div>
           <span>A place to </span>
           <span id="get-part">get</span>
-          <SearchInput onUpdateItems={props.onUpdateItems} />
+          <SearchInput onUpdateItems={props.onUpdateItems} onUpdateSearchTitle={props.onUpdateSearchTitle} />
           <span> the cool stuff.</span>
         </div>
       </div>
