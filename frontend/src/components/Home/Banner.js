@@ -24,13 +24,20 @@ const SearchInput = (props) => {
 };
 
 const Banner = (props) => {
+
+  const showSearch = () => {
+    const searchBox = document.getElementById("search-box");
+    searchBox.style.display = "initial";
+    searchBox.focus();
+  }
+
   return (
     <div className="banner text-white">
       <div className="container p-4 text-center">
         <img src={logo} alt="banner" />
         <div>
           <span>A place to </span>
-          <span id="get-part">get</span>
+          <span id="get-part" onClick={showSearch}>get</span>
           <SearchInput onUpdateItems={props.onUpdateItems} onUpdateSearchTitle={props.onUpdateSearchTitle} />
           <span> the cool stuff.</span>
         </div>
