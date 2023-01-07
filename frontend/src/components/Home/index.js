@@ -51,15 +51,24 @@ class Home extends React.Component {
       Promise.all([agent.Tags.getAll(), itemsPromise()])
     );
   }
+  searchTitle = null;
+  updatesearchTitle = (newTitle) => {
+    console.log("newTitle", newTitle);
+    if (newTitle.length < 3) {
+      this.searchTitle = null;
+    } else {
+      this.searchTitle = newTitle;
+    }
+  }
 
   render() {
     return (
       <div className="home-page">
-        <Banner onUpdateItems={this.updateItems} />
+        <Banner onUpdateItems={this.updateItems} onUpdateSearchTitle={this.updatesearchTitle} />
 
         <div className="container page">
           <Tags tags={this.props.tags} onClickTag={this.props.onClickTag} />
-          <MainView />
+          <MainView searchTitle={this.searchTitle}/>
         </div>
       </div>
     );
