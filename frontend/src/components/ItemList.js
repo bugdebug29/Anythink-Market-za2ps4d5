@@ -4,15 +4,20 @@ import React from "react";
 
 const NoItem = (props) => {
 
-  if(props.searchTitle.length > 2){
-    return (
-      <div className="py-4 no-items" >
-        No items found for <span className="search-title" id="empty">{props.searchTitle}</span>
-      </div>
-    );  
+  if (!props.searchTitle) {
+    return <div className="py-4 no-items">No items are here... yet.</div>;
   }
-
-  return <div className="py-4 no-items">No items are here... yet.</div>;
+  
+  return (
+    
+    <div
+      id="empty"
+      className="card bg-dark border-light p-3"
+      style={{ borderRadius: "20px" }}
+    >
+      No items found for <span className="search-title" >{props.searchTitle}</span>
+    </div>
+  );  
   
 }
 

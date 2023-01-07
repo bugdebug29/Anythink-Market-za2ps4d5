@@ -6,11 +6,12 @@ const SearchInput = (props) => {
 
   const inputHandler = (ev) => {
     const len = ev.target.value.length;
-    const title = ev.target.value;
-    if(len > 2){
-      const newItemsPromise = agent.Items.byTitle(ev.target.value);
-      props.onUpdateItems(newItemsPromise);
-    }
+    const title = len > 2 ? ev.target.value : "";
+
+    console.log("\nev.target.value:", ev.target.value, "\nlen:", len, "\ntitle:", title);
+    // const newItemsPromise = agent.Items.all;
+    const newItemsPromise = agent.Items.byTitle(title);
+    props.onUpdateItems(newItemsPromise);
     props.onUpdateSearchTitle(title);
 
   };
