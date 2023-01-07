@@ -25,10 +25,9 @@ const SearchInput = (props) => {
 
 const Banner = (props) => {
 
+  const [isSearchBoxVisible, setIsSearchBoxVisible] = React.useState(false);
   const showSearch = () => {
-    const searchBox = document.getElementById("search-box");
-    searchBox.style.display = "initial";
-    searchBox.focus();
+    setIsSearchBoxVisible(!isSearchBoxVisible);
   }
 
   return (
@@ -38,7 +37,7 @@ const Banner = (props) => {
         <div>
           <span>A place to </span>
           <span id="get-part" onClick={showSearch}>get</span>
-          <SearchInput onUpdateItems={props.onUpdateItems} onUpdateSearchTitle={props.onUpdateSearchTitle} />
+          {isSearchBoxVisible && <SearchInput onUpdateItems={props.onUpdateItems} onUpdateSearchTitle={props.onUpdateSearchTitle} /> }
           <span> the cool stuff.</span>
         </div>
       </div>
