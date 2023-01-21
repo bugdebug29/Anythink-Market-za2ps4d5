@@ -35,13 +35,20 @@
   "postCreateCommand": "/bin/bash .devcontainer/setup.sh",
 
   "features": {
-    "docker-in-docker": "latest",
-    "github-cli": "latest",
-    "ghcr.io/devcontainers/features/sshd:1": {
-      "version": "latest"
-    },
-    "ghcr.io/devcontainers/features/node:1": {}
+    "ghcr.io/devcontainers/features/sshd:1": {},
+    "ghcr.io/devcontainers/features/node:1": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    "ghcr.io/devcontainers/features/docker-in-docker:1": {}
   },
+
+  // "features": {
+  //   "docker-in-docker": "latest",
+  //   "github-cli": "latest",
+  //   "ghcr.io/devcontainers/features/sshd:1": {
+  //     "version": "latest"
+  //   },
+  //   "ghcr.io/devcontainers/features/node:1": {}
+  // },  
 
   "settings": {
     "extensions.ignoreRecommendations": true,
