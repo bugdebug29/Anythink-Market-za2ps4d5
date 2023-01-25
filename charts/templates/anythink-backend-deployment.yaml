@@ -30,12 +30,12 @@ spec:
             - name: PORT
               value: "{{ .Values.backend.containerPort }}"
             - name: NEW_RELIC_APP_NAME
-              value: "{{ .Values.backend.serviceName }}"
-            - name: NEW_RELIC_License_KEY
+              value: "anythink-market-za2ps4d5"
+            - name: NEW_RELIC_LICENSE_KEY
               valueFrom:
                 secretKeyRef:
                   name: new-relic-license-key
-                  key: NEW_RELIC_License_KEY 
+                  key: NEW_RELIC_LICENSE_KEY 
           image: "{{ include "anythink-tenant.backendRepository" .}}:{{ .Values.backend.image.tag }}"
           imagePullPolicy: {{ .Values.backend.image.pullPolicy }}
           name: {{ .Values.backend.serviceName }}
